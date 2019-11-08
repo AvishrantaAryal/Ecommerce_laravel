@@ -21,8 +21,21 @@ class OrderlistController extends Controller
    	return view('cd-admin.orderlist.orderdetails',compact('order'));
    }
 
-   public function statusupdate(){
-   	dd("here");
+   public function statusupdate($id){
+   	$a = [];
+		$test = DB::table('orders')->where('id',$id)->get()->first();
+		if($test->status=='processing')
+		{
+			$a['status'] = 'delivered';
+		}
+		elseif($test->status=='pending')
+		{
+			$a['status'] = 'processing';
+		}
+		
+		DB::table('orders')->where('id',$id)->update($a);
+		
+		return redirect('/orderlist');
    }
 
    

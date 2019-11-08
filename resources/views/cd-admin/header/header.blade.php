@@ -116,14 +116,15 @@
             
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-info"></i> <span>About</span>
+                    <i class="fa fa-bar-chart"></i> <span>Reports</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="{{url('/abouts-add')}}"><i class="fa fa-circle-o"></i>Add About</a></li>
-                    <li><a href="{{url('/abouts-view')}}"><i class="fa fa-circle-o"></i>View About </a></li>
+                    <li class="active"><a href="{{url('/salesreport')}}"><i class="fa fa-circle-o"></i>Sales Report</a></li>
+                    <li><a href="{{url('/productsreport')}}"><i class="fa fa-circle-o"></i>Products Report </a></li>
+                    <li><a href="{{url('/customersreport')}}"><i class="fa fa-circle-o"></i>Customers Report </a></li>
                 </ul>
             </li>
 

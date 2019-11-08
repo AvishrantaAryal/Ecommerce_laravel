@@ -28,6 +28,13 @@ Route::get('/dashboard','DashboardController@view');
 Route::get('/orderlist','OrderlistController@view');
 Route::get('/orderlistdetails/{id}','OrderlistController@details');
 Route::get('/deleteorder/{id}','OrderlistController@deleteorder');
-Route::post('/orderliststatus','OrderlistController@statusupdate');
+Route::post('/orderliststatus/{id}','OrderlistController@statusupdate');
+
+
+
+//Sales REPORT
+Route::get('/salesreport','SalesReportController@sales');
+Route::post('/status','SalesReportController@report');
+Route::post('/daterange/fetch_data', 'SalesReportController@fetch_data')->name('daterange.fetch_data');
 });
 

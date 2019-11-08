@@ -72,26 +72,47 @@ Order List
                   <td></td>
                   <td>{{$ord->product_name}}</td>
                   <td>price</td>
-                  <td height="75px">
-                  <form action="{{url('/orderliststatus')}}" method="POST">
+                  <td height="110px">
+                  <form action="{{url('/orderliststatus/'.$ord->id)}}" method="POST">
                       {{csrf_field()}}
                     <div class="btn-group">
+                      @if($ord->status == 'delivered')
+                      <div class="btn-success" style="width: 75px;height: 30px; padding-left: 2px;">Delivered</div>
+                      @elseif($ord->status == 'pending')
+                      <button type="button" class="btn btn-warning">Pending</button>
+                      @else
+                      <button type="button" class="btn btn-info">Processing</button>
+                      
+                      @endif
 
-                 
+                  @if($ord->status =='pending' ||$ord->status =='processing' )
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>
+
+                  @if($ord->status =='pending')
                  
                   <div class="dropdown-menu" role="menu" style="min-width: 0px;">
-                    <li> <button class="btn btn-danger" type="submit">Not Available</button>
-                    </li>
+                 
+                    <li> <button class="btn btn-info" type="submit">Processing</button></li>
+                     <li> <button class="btn btn-info" type="submit">Cancel</button></li>
+                    
                   </div>
-                  
+                   @elseif($ord->status =='processing')
+                 
+                  <div class="dropdown-menu" role="menu" style="min-width: 0px;">
+                
+                  <li style="margin-bottom: 2px;"> <button class="btn btn-success" type="submit">Delivered </button></li>
+                    
+                    
+                  </div>
+                  @endif
+                  @endif
                 </div>
               </form> </td>
                   <td>
-                      <a href="{{url('/orderlistdetails/'.$ord->id)}}"> <button class="btn btn-success"><i class="fa  fa-eye"> </i></button></a>
+                      <a href="{{url('/orderlistdetails/'.$ord->id)}}"> <button class="btn btn-primary"><i class="fa  fa-eye"> </i></button></a>
                     <button class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{$ord->id}}"><i class="fa fa-trash"> </i></button>
                  
 
